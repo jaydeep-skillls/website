@@ -1,1 +1,69 @@
+---
+import Base from '../../layouts/Base.astro';
+
+const posts = await Astro.glob('./*.md');
+const sorted = posts.sort((a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date));
+---
+<Base title="Archive — Weekly Log">
+  <style>
+    h1 {
+      font-family: 'Instrument Serif', serif;
+      font-size: 2rem;
+      font-weight: 400;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .year-group { margin-bottom: 2rem; }
+
+    .year-label {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    ul { list-style: none; }
+
+    li {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid var(--border);
+      gap: 1rem;
+    }
+
+    li a { color: var(--ink); font-size: 13px; }
+    li a:hover { color: var(--accent); }
+    .date { color: var(--ink-light); font-size: 11px; white-space: nowrap; }
+  </style>
+
+  <h1>Archive</h1>
+
+  {(() => {
+    const byYear = sorted.reduce((acc, post) => {
+      const year = new Date(post.frontmatter.date).getFullYear();
+      if (!acc[year]) acc[year] = [];
+      acc[year].push(post);
+      return acc;
+    }, {});
+
+    return Object.entries(byYear).sort(([a], [b]) => b - a).map(([year, posts]) => (
+      <div class="year-group">
+        <div class="year-label">{year}</div>
+        <ul>
+          {posts.map(post => (
+            <li>
+              <a href={post.url}>{post.frontmatter.title}</a>
+              <span class="date">{new Date(post.frontmatter.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ));
+  })()}
+</Base>
 
