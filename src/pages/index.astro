@@ -1,46 +1,48 @@
 ---
 import Base from '../layouts/Base.astro';
 
-// Get all posts sorted by date
 const posts = await Astro.glob('./posts/*.md');
 const sorted = posts.sort((a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date));
 const latest = sorted[0];
 const older = sorted.slice(1);
 ---
-<Base title="Weekly Log">
+<Base title="Jaydeep Kakadiya">
   <style>
     .intro {
-      margin-bottom: 3rem;
-      padding-bottom: 2rem;
+      margin-bottom: 1.75rem;
+      padding-bottom: 1.5rem;
       border-bottom: 1px solid var(--border);
     }
 
-    .intro p {
-      color: var(--ink-light);
-      font-size: 13px;
-      margin-top: 0.5rem;
-    }
-
     .intro h1 {
-      font-family: 'Instrument Serif', serif;
-      font-size: 2.2rem;
-      font-weight: 400;
-      line-height: 1.2;
+      font-family: 'Nunito', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
     }
 
-    .latest-label {
+    .bio {
+      font-size: 14px;
+      color: var(--ink);
+      line-height: 1.7;
+    }
+
+    .bio a { color: var(--accent); }
+
+    .section-label {
       font-size: 11px;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--accent);
       margin-bottom: 0.75rem;
+      margin-top: 1.75rem;
     }
 
     .post-card {
       background: var(--card);
       border: 1px solid var(--border);
-      padding: 2rem;
-      margin-bottom: 1rem;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 0.75rem;
       transition: border-color 0.2s;
     }
 
@@ -48,17 +50,17 @@ const older = sorted.slice(1);
 
     .post-card .date {
       font-size: 11px;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.06em;
       color: var(--ink-light);
       text-transform: uppercase;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.35rem;
     }
 
     .post-card h2 {
-      font-family: 'Instrument Serif', serif;
-      font-size: 1.5rem;
-      font-weight: 400;
-      margin-bottom: 0.75rem;
+      font-family: 'Nunito', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
     }
 
     .post-card h2 a { color: var(--ink); }
@@ -67,39 +69,29 @@ const older = sorted.slice(1);
     .post-card .excerpt {
       color: var(--ink-light);
       font-size: 13px;
-      margin-bottom: 1rem;
+      margin-bottom: 0.75rem;
     }
 
     .tags {
       display: flex;
-      gap: 0.5rem;
+      gap: 0.4rem;
       flex-wrap: wrap;
     }
 
     .tag {
       font-size: 11px;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      padding: 0.2rem 0.6rem;
+      padding: 0.15rem 0.5rem;
       border: 1px solid var(--border);
       color: var(--ink-light);
     }
 
-    .older-title {
-      font-size: 11px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--ink-light);
-      margin: 2rem 0 1rem;
-    }
-
-    .older-list { list-style: none; }
+    .older-list { list-style: none; margin-top: 0.5rem; }
 
     .older-list li {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
-      padding: 0.6rem 0;
+      padding: 0.5rem 0;
       border-bottom: 1px solid var(--border);
       gap: 1rem;
     }
@@ -116,13 +108,18 @@ const older = sorted.slice(1);
   </style>
 
   <div class="intro">
-    <h1>What I'm up to,<br /><em>week by week.</em></h1>
-    <p>A personal log of what I built, what I read, and what I did.</p>
+    <h1>Jaydeep Kakadiya</h1>
+    <p class="bio">
+      Controls & robotics engineer at Timetooth Technologies. I work on electromechanical systems — wearable robotics, automation platforms, and assistive devices. Background in system dynamics, real-time control, and hardware integration. IIT Gandhinagar grad.
+      <a href="/work">Full profile →</a>
+    </p>
   </div>
+
+  <div class="section-label">Weekly Log</div>
+  <p style="font-size: 13px; color: var(--ink-light); margin-bottom: 1rem;">What I built, read, and did — every week.</p>
 
   {latest ? (
     <>
-      <div class="latest-label">Latest Entry</div>
       <div class="post-card">
         <div class="date">{new Date(latest.frontmatter.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</div>
         <h2><a href={latest.url}>{latest.frontmatter.title}</a></h2>
@@ -140,7 +137,7 @@ const older = sorted.slice(1);
 
   {older.length > 0 && (
     <>
-      <div class="older-title">Previous Entries</div>
+      <div class="section-label" style="margin-top: 1.5rem;">Previous Entries</div>
       <ul class="older-list">
         {older.map(post => (
           <li>
