@@ -1,7 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 
-const posts = await Astro.glob('./*.md');
+const posts = await Astro.glob('./posts/*.md');
 const sorted = posts.sort((a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date));
 ---
 <Base title="Archive — Weekly Log">
