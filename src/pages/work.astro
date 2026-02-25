@@ -1,7 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 ---
-<Base title="Work — Weekly Log">
+<Base title="Work — Jaydeep Kakadiya">
   <style>
     .page-header {
       margin-bottom: 2.5rem;
@@ -13,13 +13,24 @@ import Base from '../layouts/Base.astro';
       font-family: 'Nunito', sans-serif;
       font-size: 2rem;
       font-weight: 700;
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.25rem;
     }
 
-    .page-header .subtitle {
+    .page-header .tagline {
       color: var(--ink-light);
       font-size: 14px;
+      margin-bottom: 0.5rem;
     }
+
+    .page-header .contact {
+      font-size: 12px;
+      color: var(--ink-light);
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .page-header .contact a { color: var(--accent); }
 
     .section {
       margin-bottom: 2.5rem;
@@ -35,58 +46,105 @@ import Base from '../layouts/Base.astro';
       border-bottom: 1px solid var(--border);
     }
 
-    /* Experience */
+    .summary {
+      font-size: 14px;
+      color: var(--ink);
+      line-height: 1.7;
+    }
+
     .experience-item {
-      margin-bottom: 1.75rem;
+      margin-bottom: 2rem;
+    }
+
+    .experience-item .role-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 0.2rem;
     }
 
     .experience-item .role {
       font-weight: 700;
       font-size: 15px;
-      color: var(--ink);
-    }
-
-    .experience-item .company-line {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: 0.4rem;
-    }
-
-    .experience-item .company {
-      color: var(--ink-light);
-      font-size: 13px;
     }
 
     .experience-item .period {
-      color: var(--ink-light);
       font-size: 12px;
+      color: var(--ink-light);
       white-space: nowrap;
     }
 
-    .experience-item .description {
+    .experience-item .company {
+      font-size: 13px;
+      color: var(--ink-light);
+      margin-bottom: 0.75rem;
+    }
+
+    .project-block {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      padding: 1rem 1.25rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .project-block .proj-title-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-block .proj-title {
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .project-block .proj-period {
+      font-size: 11px;
+      color: var(--ink-light);
+      white-space: nowrap;
+    }
+
+    .project-block ul {
+      padding-left: 1.25rem;
+      margin: 0;
+    }
+
+    .project-block ul li {
       font-size: 13px;
       color: var(--ink);
-      margin-top: 0.4rem;
+      margin-bottom: 0.3rem;
       line-height: 1.6;
     }
 
-    /* Skills */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-      gap: 0.5rem;
+    .skills-group {
+      margin-bottom: 1rem;
+    }
+
+    .skills-group .skills-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 0.4rem;
+    }
+
+    .skills-group .skills-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
     }
 
     .skill-tag {
       background: var(--card);
       border: 1px solid var(--border);
-      padding: 0.4rem 0.75rem;
-      font-size: 13px;
+      padding: 0.3rem 0.7rem;
+      font-size: 12px;
       color: var(--ink);
     }
 
-    /* Projects */
     .project-item {
       background: var(--card);
       border: 1px solid var(--border);
@@ -97,27 +155,37 @@ import Base from '../layouts/Base.astro';
 
     .project-item:hover { border-color: var(--accent); }
 
-    .project-item .project-name {
+    .project-item .proj-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .project-item .proj-name {
       font-weight: 700;
-      font-size: 15px;
-      margin-bottom: 0.3rem;
+      font-size: 14px;
     }
 
-    .project-item .project-name a {
-      color: var(--ink);
-    }
-
-    .project-item .project-name a:hover {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    .project-item .project-desc {
-      font-size: 13px;
+    .project-item .proj-meta {
+      font-size: 11px;
       color: var(--ink-light);
+      white-space: nowrap;
     }
 
-    /* Education */
+    .project-item ul {
+      padding-left: 1.25rem;
+      margin: 0;
+    }
+
+    .project-item ul li {
+      font-size: 13px;
+      color: var(--ink);
+      margin-bottom: 0.3rem;
+      line-height: 1.6;
+    }
+
     .education-item {
       display: flex;
       justify-content: space-between;
@@ -128,8 +196,8 @@ import Base from '../layouts/Base.astro';
     }
 
     .education-item .degree {
-      font-size: 14px;
-      font-weight: 600;
+      font-size: 15px;
+      font-weight: 700;
     }
 
     .education-item .school {
@@ -137,85 +205,194 @@ import Base from '../layouts/Base.astro';
       color: var(--ink-light);
     }
 
+    .education-item .edu-right {
+      text-align: right;
+    }
+
     .education-item .year {
       font-size: 12px;
       color: var(--ink-light);
-      white-space: nowrap;
+    }
+
+    .education-item .cpi {
+      font-size: 12px;
+      color: var(--ink-light);
     }
   </style>
 
   <div class="page-header">
-    <h1>Work & Experience</h1>
-    <p class="subtitle">A summary of what I've built and where I've been.</p>
+    <h1>Jaydeep Kakadiya</h1>
+    <p class="tagline">Controls & Robotics Engineer — B.Tech Mechanical Engineering with Minor in Robotics, IIT Gandhinagar</p>
+    <div class="contact">
+      <span>+91 9979598050</span>
+      <a href="mailto:jaydeep.kakadiya@alumni.iitgn.ac.in">jaydeep.kakadiya@alumni.iitgn.ac.in</a>
+    </div>
   </div>
 
-  <!-- EXPERIENCE -->
+  <div class="section">
+    <div class="section-title">Summary</div>
+    <p class="summary">Controls & robotics engineer with experience designing and validating electromechanical systems including wearable robotics, automation platforms, and assistive devices. Strong background in system dynamics, linear and nonlinear control, actuation systems, signal processing, real-time implementation, and hardware integration across real-world platforms.</p>
+  </div>
+
   <div class="section">
     <div class="section-title">Experience</div>
 
     <div class="experience-item">
-      <div class="role">Your Job Title</div>
-      <div class="company-line">
-        <span class="company">Company Name</span>
-        <span class="period">Jan 2023 — Present</span>
+      <div class="role-line">
+        <span class="role">Engineer Analyst</span>
+        <span class="period">July 2022 — Present</span>
       </div>
-      <p class="description">A short description of what you did, what you built, and what impact you had. Keep it to 2–3 sentences.</p>
+      <div class="company">Timetooth Technologies</div>
+
+      <div class="project-block">
+        <div class="proj-title-line">
+          <span class="proj-title">Lower-Limb Exoskeleton — Control System Design & Validation</span>
+          <span class="proj-period">July 2022 – Present</span>
+        </div>
+        <ul>
+          <li>Designed control strategies for a power augmentation lower-limb exoskeleton, including disturbance observer–based admittance control and gait-phase–based torque profile control.</li>
+          <li>Modeled the human–exoskeleton system using Anybody Modeling System and MATLAB to analyze performance under delays, estimation uncertainties, and ground reaction force assumptions.</li>
+          <li>Performed sensor and actuator characterization including deriving velocity and acceleration from encoder data, validating load cells and gait detection sensors, and verifying motor torque–current relationships.</li>
+          <li>Integrated sensing and actuation components and implemented real-time control using LabVIEW across CAN, I2C, and RS485 interfaces, including UI tools for system control and monitoring.</li>
+          <li>Designed experimental protocols and conducted human trials with final validation in progress using qualitative feedback and heart rate measurements.</li>
+        </ul>
+      </div>
+
+      <div class="project-block">
+        <div class="proj-title-line">
+          <span class="proj-title">Conveyor Box Reorientation System — Automation & System Integration</span>
+          <span class="proj-period">Aug 2025 – Jan 2026</span>
+        </div>
+        <ul>
+          <li>Contributed to design of a conveyor-based system to reorient boxes from arbitrary orientations through multi-axis manipulation directly on the conveyor.</li>
+          <li>Participated in mechanism development to accommodate varying box sizes and determined torque and speed requirements for actuator selection.</li>
+          <li>Selected and validated sensing solutions for box detection and alignment verification and tested actuator performance.</li>
+          <li>Designed distributed control architecture for coordinated multi-module operation and configured Ethernet-based communication between controllers.</li>
+        </ul>
+      </div>
+
+      <div class="project-block">
+        <div class="proj-title-line">
+          <span class="proj-title">Elbow Prosthetic Actuation System — Requirements Analysis & System Upgrade</span>
+          <span class="proj-period">Jan 2026 – Present</span>
+        </div>
+        <ul>
+          <li>Led actuator upgrade effort for an existing elbow prosthetic, analyzing system dynamics to determine torque and speed requirements for improved performance.</li>
+          <li>Incorporated prosthetic-specific requirements including passive load holding without power consumption and free-swing behavior for natural movement.</li>
+          <li>Performed trade-off analysis across performance, mechanical and electrical constraints, with validation phase planned as next step.</li>
+        </ul>
+      </div>
     </div>
 
     <div class="experience-item">
-      <div class="role">Previous Job Title</div>
-      <div class="company-line">
-        <span class="company">Previous Company</span>
-        <span class="period">Jun 2021 — Dec 2022</span>
+      <div class="role-line">
+        <span class="role">Summer Research Intern</span>
+        <span class="period">May 2021 — July 2021</span>
       </div>
-      <p class="description">A short description of what you did here. Focus on what you learned and what you shipped.</p>
+      <div class="company">IIT Gandhinagar</div>
+      <div class="project-block">
+        <div class="proj-title-line">
+          <span class="proj-title">Developing Robotics Kit for Hands-on Robotics</span>
+        </div>
+        <ul>
+          <li>Contributed to development of an educational robotics kit for practical learning of control systems concepts.</li>
+          <li>Modeled system dynamics and documented control strategies in MATLAB and Python for a Furuta pendulum platform.</li>
+          <li>Implemented controllers on Raspberry Pi Pico using C/C++ SDK and developed supporting documentation and software modules.</li>
+        </ul>
+      </div>
     </div>
-
   </div>
 
-  <!-- SKILLS -->
   <div class="section">
     <div class="section-title">Skills</div>
-    <div class="skills-grid">
-      <div class="skill-tag">JavaScript</div>
-      <div class="skill-tag">TypeScript</div>
-      <div class="skill-tag">React</div>
-      <div class="skill-tag">Node.js</div>
-      <div class="skill-tag">Python</div>
-      <div class="skill-tag">SQL</div>
-      <div class="skill-tag">Git</div>
-      <div class="skill-tag">Your Skill</div>
+
+    <div class="skills-group">
+      <div class="skills-label">Controls & Systems</div>
+      <div class="skills-tags">
+        <span class="skill-tag">Control System Design</span>
+        <span class="skill-tag">Dynamic Modeling</span>
+        <span class="skill-tag">Actuation System Design</span>
+        <span class="skill-tag">System Validation</span>
+        <span class="skill-tag">Signal Processing</span>
+        <span class="skill-tag">Real-time Control</span>
+      </div>
+    </div>
+
+    <div class="skills-group">
+      <div class="skills-label">Embedded & Communication</div>
+      <div class="skills-tags">
+        <span class="skill-tag">CAN</span>
+        <span class="skill-tag">RS485</span>
+        <span class="skill-tag">I2C</span>
+        <span class="skill-tag">SPI</span>
+        <span class="skill-tag">Ethernet</span>
+        <span class="skill-tag">LabVIEW</span>
+        <span class="skill-tag">Arduino</span>
+        <span class="skill-tag">Raspberry Pi Pico</span>
+      </div>
+    </div>
+
+    <div class="skills-group">
+      <div class="skills-label">Software & Simulation</div>
+      <div class="skills-tags">
+        <span class="skill-tag">MATLAB/Simulink</span>
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">C/C++</span>
+        <span class="skill-tag">Anybody Modeling System</span>
+      </div>
     </div>
   </div>
 
-  <!-- PROJECTS -->
   <div class="section">
     <div class="section-title">Projects</div>
 
     <div class="project-item">
-      <div class="project-name"><a href="#">This Website</a></div>
-      <p class="project-desc">A personal weekly log built with Astro and deployed on Netlify. Documents what I build, read, and do each week.</p>
+      <div class="proj-header">
+        <span class="proj-name">Swirling Pendulum Dynamics and Control</span>
+        <span class="proj-meta">July 2021 – May 2022</span>
+      </div>
+      <ul>
+        <li>Derived system dynamics and performed stability and controllability analysis for a novel underactuated two-DOF pendulum system.</li>
+        <li>Designed and simulated linear and nonlinear control strategies in MATLAB to study system behavior and tracking performance.</li>
+        <li>Implemented selected control strategies on experimental setup using Python scripts with ODrive motor controller.</li>
+      </ul>
     </div>
 
     <div class="project-item">
-      <div class="project-name"><a href="#">Another Project</a></div>
-      <p class="project-desc">A short description of the project, what problem it solves, and what tech you used to build it.</p>
+      <div class="proj-header">
+        <span class="proj-name">Tactile Acuity Device</span>
+        <span class="proj-meta">Dec 2020 – June 2021 · Prof. Leslee Lazar</span>
+      </div>
+      <ul>
+        <li>Developed a mechanical device to support psychophysical experiments assessing tactile acuity by presenting controlled surface patterns.</li>
+        <li>Designed and fabricated a planetary gear mechanism to switch between interchangeable plates with varying dot sizes, spacing, and orientations.</li>
+      </ul>
     </div>
 
+    <div class="project-item">
+      <div class="proj-header">
+        <span class="proj-name">Autonomous Terrace Farming Bot</span>
+        <span class="proj-meta">Nov – Dec 2019 · Inter IIT Tech Meet 8.0 · 🥉 Bronze</span>
+      </div>
+      <ul>
+        <li>Designed and built a stair-climbing robot for agricultural applications as part of Inter IIT Tech Meet competition at IIT Roorkee.</li>
+        <li>Secured bronze medal for the team.</li>
+      </ul>
+    </div>
   </div>
 
-  <!-- EDUCATION -->
   <div class="section">
     <div class="section-title">Education</div>
-
     <div class="education-item">
       <div>
-        <div class="degree">Your Degree</div>
-        <div class="school">Your University</div>
+        <div class="degree">B.Tech — Mechanical Engineering</div>
+        <div class="school">IIT Gandhinagar · Minor in Robotics</div>
       </div>
-      <span class="year">2021</span>
+      <div class="edu-right">
+        <div class="year">2018 – 2022</div>
+        <div class="cpi">CPI: 8.44</div>
+      </div>
     </div>
-
   </div>
 
 </Base>
