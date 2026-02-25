@@ -1,0 +1,92 @@
+---
+const { title = "My Weekly Log" } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f5f0e8;
+      --ink: #1a1a1a;
+      --ink-light: #6b6459;
+      --accent: #c84b2f;
+      --border: #d4cdc3;
+      --card: #faf7f2;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'DM Mono', monospace;
+      font-size: 14px;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    header {
+      border-bottom: 1px solid var(--border);
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    header .site-name {
+      font-family: 'Instrument Serif', serif;
+      font-size: 1.4rem;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    header nav a {
+      color: var(--ink-light);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-left: 1.5rem;
+    }
+
+    header nav a:hover { color: var(--accent); text-decoration: none; }
+
+    main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem 2rem;
+      text-align: center;
+      color: var(--ink-light);
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="site-name" href="/">Weekly Log</a>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/archive">Archive</a>
+    </nav>
+  </header>
+  <main>
+    <slot />
+  </main>
+  <footer>
+    Written by me, every week.
+  </footer>
+</body>
+</html>
