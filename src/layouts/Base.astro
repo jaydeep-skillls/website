@@ -9,7 +9,7 @@ const { title = "My Weekly Log" } = Astro.props;
   <title>{title}</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -25,7 +25,7 @@ const { title = "My Weekly Log" } = Astro.props;
     body {
       background: var(--bg);
       color: var(--ink);
-      font-family: 'DM Mono', monospace;
+      font-family: 'Nunito', sans-serif;
       font-size: 14px;
       line-height: 1.7;
       min-height: 100vh;
@@ -43,16 +43,18 @@ const { title = "My Weekly Log" } = Astro.props;
     }
 
     header .site-name {
-      font-family: 'Instrument Serif', serif;
+      font-family: 'Nunito', sans-serif;
       font-size: 1.4rem;
+      font-weight: 700;
       color: var(--ink);
       text-decoration: none;
     }
 
     header nav a {
       color: var(--ink-light);
-      font-size: 12px;
-      letter-spacing: 0.08em;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
       text-transform: uppercase;
       margin-left: 1.5rem;
     }
@@ -79,6 +81,7 @@ const { title = "My Weekly Log" } = Astro.props;
     <a class="site-name" href="/">Weekly Log</a>
     <nav>
       <a href="/">Home</a>
+      <a href="/work">Work</a>
       <a href="/archive">Archive</a>
     </nav>
   </header>
