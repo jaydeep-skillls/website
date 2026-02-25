@@ -1,0 +1,221 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="Work — Weekly Log">
+  <style>
+    .page-header {
+      margin-bottom: 2.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .page-header h1 {
+      font-family: 'Nunito', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    .page-header .subtitle {
+      color: var(--ink-light);
+      font-size: 14px;
+    }
+
+    .section {
+      margin-bottom: 2.5rem;
+    }
+
+    .section-title {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* Experience */
+    .experience-item {
+      margin-bottom: 1.75rem;
+    }
+
+    .experience-item .role {
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--ink);
+    }
+
+    .experience-item .company-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.4rem;
+    }
+
+    .experience-item .company {
+      color: var(--ink-light);
+      font-size: 13px;
+    }
+
+    .experience-item .period {
+      color: var(--ink-light);
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .experience-item .description {
+      font-size: 13px;
+      color: var(--ink);
+      margin-top: 0.4rem;
+      line-height: 1.6;
+    }
+
+    /* Skills */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 0.5rem;
+    }
+
+    .skill-tag {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 0.4rem 0.75rem;
+      font-size: 13px;
+      color: var(--ink);
+    }
+
+    /* Projects */
+    .project-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 0.75rem;
+      transition: border-color 0.2s;
+    }
+
+    .project-item:hover { border-color: var(--accent); }
+
+    .project-item .project-name {
+      font-weight: 700;
+      font-size: 15px;
+      margin-bottom: 0.3rem;
+    }
+
+    .project-item .project-name a {
+      color: var(--ink);
+    }
+
+    .project-item .project-name a:hover {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .project-item .project-desc {
+      font-size: 13px;
+      color: var(--ink-light);
+    }
+
+    /* Education */
+    .education-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border);
+      gap: 1rem;
+    }
+
+    .education-item .degree {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .education-item .school {
+      font-size: 13px;
+      color: var(--ink-light);
+    }
+
+    .education-item .year {
+      font-size: 12px;
+      color: var(--ink-light);
+      white-space: nowrap;
+    }
+  </style>
+
+  <div class="page-header">
+    <h1>Work & Experience</h1>
+    <p class="subtitle">A summary of what I've built and where I've been.</p>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <div class="section">
+    <div class="section-title">Experience</div>
+
+    <div class="experience-item">
+      <div class="role">Your Job Title</div>
+      <div class="company-line">
+        <span class="company">Company Name</span>
+        <span class="period">Jan 2023 — Present</span>
+      </div>
+      <p class="description">A short description of what you did, what you built, and what impact you had. Keep it to 2–3 sentences.</p>
+    </div>
+
+    <div class="experience-item">
+      <div class="role">Previous Job Title</div>
+      <div class="company-line">
+        <span class="company">Previous Company</span>
+        <span class="period">Jun 2021 — Dec 2022</span>
+      </div>
+      <p class="description">A short description of what you did here. Focus on what you learned and what you shipped.</p>
+    </div>
+
+  </div>
+
+  <!-- SKILLS -->
+  <div class="section">
+    <div class="section-title">Skills</div>
+    <div class="skills-grid">
+      <div class="skill-tag">JavaScript</div>
+      <div class="skill-tag">TypeScript</div>
+      <div class="skill-tag">React</div>
+      <div class="skill-tag">Node.js</div>
+      <div class="skill-tag">Python</div>
+      <div class="skill-tag">SQL</div>
+      <div class="skill-tag">Git</div>
+      <div class="skill-tag">Your Skill</div>
+    </div>
+  </div>
+
+  <!-- PROJECTS -->
+  <div class="section">
+    <div class="section-title">Projects</div>
+
+    <div class="project-item">
+      <div class="project-name"><a href="#">This Website</a></div>
+      <p class="project-desc">A personal weekly log built with Astro and deployed on Netlify. Documents what I build, read, and do each week.</p>
+    </div>
+
+    <div class="project-item">
+      <div class="project-name"><a href="#">Another Project</a></div>
+      <p class="project-desc">A short description of the project, what problem it solves, and what tech you used to build it.</p>
+    </div>
+
+  </div>
+
+  <!-- EDUCATION -->
+  <div class="section">
+    <div class="section-title">Education</div>
+
+    <div class="education-item">
+      <div>
+        <div class="degree">Your Degree</div>
+        <div class="school">Your University</div>
+      </div>
+      <span class="year">2021</span>
+    </div>
+
+  </div>
+
+</Base>
